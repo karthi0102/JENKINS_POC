@@ -9,7 +9,7 @@ pipeline {
         stage('test'){
             steps {
                 sh 'node --version'
-                sh 'echo hello1'
+                sh 'echo hello github pullg'
             }
         }
     }
