@@ -15,7 +15,10 @@ def jsonData = jsonSlurper.parseText(jsonString)
                       echo "$jsonData"
                    jsonData.each { key, value ->
     echo "Key: ${key}, Value: ${value}"
+                       env[key] = value
 }
+
+                    sh 'printenv'
                     
                     // If you have an array in your JSON
                     
