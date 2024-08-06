@@ -6,10 +6,14 @@ pipeline {
                 script {
                     // Read the file
                     def jsonString = readFile(file: './file.json')
+
+                    def jsonString = readFile(file: 'path/to/your/file.json')
+def jsonSlurper = new groovy.json.JsonSlurper()
+def jsonData = jsonSlurper.parseText(jsonString)
                     
                     // Parse the JSON
-                      echo "$jsonString"
-                   jsonString.each { key, value ->
+                      echo "$jsonData"
+                   jsonData.each { key, value ->
     echo "Key: ${key}, Value: ${value}"
 }
                     
