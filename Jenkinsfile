@@ -9,6 +9,9 @@ pipeline {
                     
                     // Parse the JSON
                       echo "$jsonString"
+                   jsonString.each { key, value ->
+    echo "Key: ${key}, Value: ${value}"
+}
                     
                     // If you have an array in your JSON
                     
