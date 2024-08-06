@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     // Read the file
-                    def jsonString = readFile(file: 'path/to/your/file.json')
+                    def jsonString = readFile(file: './file.json')
                     
                     // Parse the JSON
                     def jsonSlurper = new groovy.json.JsonSlurper()
