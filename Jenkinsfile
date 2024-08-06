@@ -1,15 +1,29 @@
 pipeline {
-    agent { docker { image 'node:20.11.1-alpine3.19' } }
+    agent any
     stages {
-        stage('build') {
+        stage('Read JSON') {
             steps {
-                sh 'node --version'
-            }
-        }
-        stage('test'){
-            steps {
-                sh 'node --version'
-                sh 'echo hello github pullg'
+                script {
+                    // Read the file
+                    def jsonString = readFile(file: 'path/to/your/file.json')
+                    
+                    // Parse the JSON
+                    def jsonSlurper = new groovy.json.JsonSlurper()
+                    def jsonData = jsonSlurper.parseText(jsonString)
+                    
+                    // Now you can use the jsonData object
+                  
+                    
+                    // If you have an array in your JSON
+                    jsonData.items.each { item ->
+                        echo "Item: ${item}"
+                    }
+                    
+                    // If you need the entire JSON as a string again
+                    def jsonBuilder = new groovy.json.JsonBuilder(jsonData)
+                    def jsonOutput = jsonBuilder.toPrettyString()
+                    echo "Full JSON: ${jsonOutput}"
+                }
             }
         }
     }
