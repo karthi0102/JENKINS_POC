@@ -17,7 +17,7 @@ pipeline {
                     jsonData.each { key, value ->
                         echo "Key: ${key}, Value: ${value}"
                         // Set each key-value pair as an environment variable
-                        env."${key}" = value.toString()
+                        env["${key}"] = value.toString()
                     }
                     
                     // Print all environment variables
